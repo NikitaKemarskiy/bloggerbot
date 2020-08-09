@@ -3,6 +3,7 @@ import StartMessage from '../controllers/start';
 const AdminHandlers = {
 	init: (bot) => {
 		bot.action('stats', async (ctx) => {
+			ctx.answerCbQuery();
 			await ctx.replyWithMediaGroup([
 				{ type: 'photo', media: 'https://lh3.googleusercontent.com/oaGyycLY6jlHYiDjxnK85obhnSujB6svxHhKGlAYN98eOBXCdeyulFuRM7sUHsbilKOmr-gOuyMmGGVU3j32ukqOHvctRO1MgNAJZ4GgGYT-lwWnpjEr3UeQ66CIWfF6cy1YY33FlbOv7Mr_UK1nfLtJE_5cqsrmf8sr_OJAfN3FfNTMptiMb7zoDgvrSL2-LOE2OblSA0xiAsRXUlzvM3wiEIZX6gPlAwfBGx4-_4gEU0yhnjv_PdcyUU5cOI6wjGs_vWsw0E7lW285WtGtpJtin3k9F9WwEQrihs2f-8auD0n6kaw7uo5o0Sft1l186_ZnHPGxQ0uNy8l_pXpKuQgyhN-GvZ9bLm0fp65btUJvtXXwsgFWp3hCIsigRaPUpUzvMMmI-3ya1ralS9sAY2iRylh01Nk_Z5BzuE80c3htn7zOR4Q4HocztcM--AEUcjogaRPR4uPRbJtmyU3F4nlJNB9SeJ2iprE6PZLK76LUd3SK57bCiCpseIKlGmYGoF9QKxzPC6Y-aFnY5PKzTZDdl168AO9dBhSLcc6aghyDYaFgKEWODTRLb_AdPqc9S-RhZqnEWYe9X2yS1sLgrLjwPNtsHg1U817fAxagBnOf5V_lSYPMjTKFvmSlbM8b1GyoWCWXF2wxyPMYWjv6XlSyLDq4s7imIXn2ESR5px46xZUEE8BqHf9vKvZP=w623-h1280-no?authuser=1' },
 				{ type: 'photo', media: 'https://lh3.googleusercontent.com/g0AinaQ8WRTpnZr79469bnKoU6ekuQrVv9SRriBLnKFWvisc4Y-yv4Nzb_-8R5l8NeoD5IdQgS6ln5E8Z3YBlCppomNdrDdPCkFkL4HmMxT2-dsikLQN9RXi-KkX9Ln07GOOQo0-NMO9Yi7RYZFxNa3F78rnFXfB9RYO2SvfhurdAfOyGsexEQY7k4TtQD_04ZM7OBL7aP7UY4DbAyEi243Qw8x6sRqt--t4Xp2BOZbIdLB2-f_1ipKx-m65E5wNO9UKADaZDhAPmAsYP950tyVGCnjxd7HzimaBP64yPO6OxNw4sFEFMDBdlC0BPNbAu6DonI4zL89hTyMkHz4cB7fxLiZOfrfq0fLJASKDJS-xleaQTCA3Hkz9XJ0ad5Cx0-1vkfEk4gbK6xH-vHQdd_bcXO9Uc34gt62lK9eEYxQ5egaprRhwcuri0VXkrmVSHI4JHz8z8b9gNcPICo17CGaoYtbVRGd3V9cpJInsPUrZup0c3AHMXJqUFU5BxxcMgYFDvX-LNcpzBxe4XrVVNpD15OcVcJ7sYv-lR8hsTNIxGgN1kmCHVsw9Inhmm88X44cqKKXUY1_QzTWcZu4qwYGbieP4-X67JoSBL-XBBuChbpNHSSju9E1LHvrx2_dNb3ORUvODQaHpHB7boeEBdJu9HnmH1D5Tc6NGXWvHn8A4Gtxa4-7ARLurb9MY=w623-h1280-no?authuser=1' },
@@ -12,7 +13,8 @@ const AdminHandlers = {
 			await StartMessage.send(ctx, '☝️ <b>Статистика</b> ☝️');
 		});
 
-		bot.action('prices', async (ctx) => {
+		bot.action('prices', async (ctx) => 
+			ctx.answerCbQuery();{
 			await StartMessage.send(
 				ctx,
 				'💰 <b>Стоимость услуг</b> 💰\n\n➡️ Обзор в стори - 7000 грн\n➡️ Пост - 12000 грн\n➡️ Если брать стори + пост даём скидку 20%\n➡️ Стори без товара/ с возвратом товара/ разговорные об услуге - 9000 грн\n➡️ Реклама личного аккаунта 2 Стори - 9000 грн\n\nСтори выходят в течении 1-2 недель после оплаты и получения, пост 1-3 недели, из-за очереди и создания поста'
@@ -20,6 +22,7 @@ const AdminHandlers = {
 		});
 
 		bot.action('rules', async (ctx) => {
+			ctx.answerCbQuery();
 			await StartMessage.send(
 				ctx,
 				'❗<b>Мы не рекламируем</b>❗\n\n1. Подделки\n2. Низкокачественные товары\n3. Финансовые пирамиды\n4. Марафоны\n5. Сетевой бизнес\n6. Заработки\n7. Ставки'
@@ -27,6 +30,7 @@ const AdminHandlers = {
 		});
 
 		bot.action('order', async (ctx) => {
+			ctx.answerCbQuery();
 			await ctx.scene.enter('order/getPhone');
 		});
 	}
